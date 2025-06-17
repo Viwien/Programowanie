@@ -1,2 +1,2 @@
 # Programowanie
-Robimy zaliczenie na programowano
+Robimy zaliczenie na programowanie
