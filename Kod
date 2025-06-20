@@ -1,0 +1,61 @@
+using System.IO.Pipes;
+using System.Linq.Expressions;
+using System.Reflection.PortableExecutable;
+using System.Security;
+
+string[] level = {
+    "############",
+    "#      #   #",
+    "#     ##   #",
+    "#          #",
+    "#          #",
+    "#      #   #",
+    "############"
+};
+
+Console.Clear();
+Console.WriteLine("Wanna see the map? Press any key until it is revealed...");
+foreach (string row in level)
+{
+    Console.ReadKey(true);
+    Console.WriteLine(row);
+}
+
+int playerColumn = 2;
+int playerRow = 3;
+
+int previousColumn = playerColumn;
+int previousRow = playerRow;
+
+while (true)
+{
+    Console.SetCursorPosition(previousColumn, previousRow);
+    Console.Write(level[previousRow][previousColumn]);
+
+    Console.SetCursorPosition(playerColumn, playerRow);
+    Console.Write("@");
+
+
+    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+    previousColumn = playerColumn;
+    previousRow = playerRow;
+
+    if (keyInfo.Key == ConsoleKey.LeftArrow)
+    {
+        playerColumn--;
+    }
+    else if (keyInfo.Key == ConsoleKey.RightArrow)
+    {
+        playerColumn++;
+    }
+    else if (keyInfo.Key == ConsoleKey.UpArrow)
+    {
+        playerRow--;
+    }
+    else if (keyInfo.Key == ConsoleKey.DownArrow)
+    {
+        playerRow++;
+    }
+
+}
